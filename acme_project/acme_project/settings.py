@@ -17,6 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
+    'django_bootstrap5',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -32,6 +34,19 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'acme_project.urls'
 
 TEMPLATES_DIR = BASE_DIR / 'templates'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'users.MyUser'
+
+LOGIN_REDIRECT_URL = 'pages:homepage'
+
+LOGIN_URL = 'login' 
+
+# Подключаем бэкенд filebased.EmailBackend:
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# Указываем директорию, в которую будут сохраняться файлы писем:
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 TEMPLATES = [
     {
